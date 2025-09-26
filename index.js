@@ -16,10 +16,6 @@ app.use((req, res, next) => {
   next();
 });
 
-app.get('/test', (req, res) => {
-  res.send('App healthy!');
-});
-
 app.get('/posts', async (req, res) => {
   const storedPosts = await getStoredPosts();
   await new Promise((resolve, reject) => setTimeout(() => resolve(), 1500));
@@ -42,6 +38,10 @@ app.post('/posts', async (req, res) => {
   const updatedPosts = [newPost, ...existingPosts];
   await storePosts(updatedPosts);
   res.status(201).json({ message: 'Stored new post.', post: newPost });
+});
+
+app.get('/readiness', (req, res) => {
+  res.status(200).json({ message: 'App healthy!' });
 });
 
 const PORT = process.env.PORT || 8080;
