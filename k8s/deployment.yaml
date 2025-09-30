@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-test          # Name of your deployment
+  labels:
+    app: backend-test         # Label for grouping
+spec:
+  replicas: 2                 # Run 2 pods for high availability
+  selector:
+    matchLabels:
+      app: backend-test       # Deployment selects pods with this label
+  template:                   # Template = Pod definition
+    metadata:
+      labels:
+        app: backend-test     # Pod label must match selector
+    spec:
+      containers:
+      - name: backend-test   
+        image: alwinjames313/backend-test:latest   
+        ports:
+        - containerPort: 8080 
+        imagePullPolicy: Always  

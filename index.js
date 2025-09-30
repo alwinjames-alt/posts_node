@@ -1,5 +1,8 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const dotenv = require('dotenv');
+// Load environment variables
+dotenv.config();
 
 const { getStoredPosts, storePosts } = require('./data/posts');
 
