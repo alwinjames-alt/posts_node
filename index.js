@@ -44,7 +44,7 @@ app.post('/posts', async (req, res) => {
 });
 
 app.get('/readiness', (req, res) => {
-  res.status(200).json({ message: 'App healthy!' });
+  res.status(200).json({ message: 'App healthyyyyyyyyyyy!' });
 });
 
 const PORT = process.env.PORT || 8080;
